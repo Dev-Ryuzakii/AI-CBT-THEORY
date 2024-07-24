@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="submit"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manage Questions</h1>
+        <h2>Add New Question</h2>
+        <form action="/questions" method="post">
+            <div class="form-group">
+                <label for="question_text">Question Text:</label>
+                <textarea name="question_text" id="question_text" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="marking_guide">Marking Guide:</label>
+                <textarea name="marking_guide" id="marking_guide" rows="4" required></textarea>
+            </div>
+            <input type="submit" value="Add Question">
+        </form>
+        <h2>Existing Questions</h2>
+        <ul>
+            {% for question in questions %}
+            <li>{{ question.question_text }}<br><strong>Marking Guide:</strong> {{ question.marking_guide }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
